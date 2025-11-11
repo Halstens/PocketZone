@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class WorldHealthBar : MonoBehaviour
+public class HealthBar : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private HealthSystem healthSystem;
