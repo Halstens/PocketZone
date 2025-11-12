@@ -544,7 +544,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  currentHealth: 0
+  currentHealth: 100
   OnHealthChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -564,10 +564,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firePoint: {fileID: 2059288219884885448}
-  bulletPrefab: {fileID: 0}
+  bulletPrefab: {fileID: 5290282183027806575, guid: b0624781a6c37614498e847f0653fa53, type: 3}
   bulletForce: 15
   maxAmmo: 30
-  currentAmmo: 0
+  currentAmmo: 30
   fireRate: 0.2
 --- !u!1 &8761206783928172671
 GameObject:
@@ -1545,8 +1545,8 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
-  m_SortingLayerID: -163580797
-  m_SortingOrder: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 4
   m_TargetDisplay: 0
 --- !u!114 &2386823915462124125
 MonoBehaviour:
@@ -1600,5 +1600,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0412943a9961ccb43b332e662ff89e80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthSystem: {fileID: 0}
+  healthSystem: {fileID: 807987088503140102}
   healthSlider: {fileID: 4593191538849441076}

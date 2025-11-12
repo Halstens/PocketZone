@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class WeaponSystem : MonoBehaviour
 {
+    // Public поля для настройки в Inspector
     [Header("Shooting")]
     public Transform firePoint;
     public GameObject bulletPrefab;
@@ -12,13 +13,16 @@ public class WeaponSystem : MonoBehaviour
     public int currentAmmo;
     
     [Header("Settings")]
-    public float fireRate = 0.2f;
+    public float fireRate = 5.2f;
     
-    private float nextFireTime = 0f;
+    // Private поля (не видны в Inspector)
+    private float nextFireTime = 0f;  // ← ЭТОЙ СТРОКИ НЕ ХВАТАЛО!
     private bool isShooting = false;
     
+    // Свойство только для чтения
     public bool CanShoot => currentAmmo > 0 && Time.time >= nextFireTime;
     
+    // Остальной код без изменений...
     void Start()
     {
         currentAmmo = maxAmmo;
@@ -47,15 +51,7 @@ public class WeaponSystem : MonoBehaviour
         currentAmmo--;
         nextFireTime = Time.time + fireRate;
         
-        // Создаем пулю
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-        
-        if (rb != null)
-        {
-            rb.AddForce(firePoint.right * bulletForce, ForceMode2D.Impulse);
-        }
-        
         Debug.Log($"Выстрел! Патронов осталось: {currentAmmo}");
     }
     

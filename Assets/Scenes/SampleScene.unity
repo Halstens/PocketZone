@@ -13414,8 +13414,9 @@ GameObject:
   - component: {fileID: 1316543585}
   - component: {fileID: 1316543584}
   - component: {fileID: 1316543583}
+  - component: {fileID: 1316543586}
   m_Layer: 5
-  m_Name: FireButton
+  m_Name: ShootButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13524,6 +13525,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1316543581}
   m_CullTransparentMesh: 1
+--- !u!114 &1316543586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1316543581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c09262082cd871e4eb4bca12be59a97f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponSystem: {fileID: 1665944345}
 --- !u!1 &1579783043
 GameObject:
   m_ObjectHideFlags: 0
@@ -13732,24 +13746,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8761206783826395215, guid: 50efabfde29e5a44b83041acd46ec4e3, type: 3}
   m_PrefabInstance: {fileID: 8761206784384519006}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1665944342
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1665944337}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 197dd56e97896f84c9c759553bbef48a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  firePoint: {fileID: 0}
-  bulletPrefab: {fileID: 0}
-  bulletForce: 15
-  maxAmmo: 30
-  currentAmmo: 0
-  fireRate: 0.2
 --- !u!114 &1665944343
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13770,6 +13766,17 @@ MonoBehaviour:
   OnDeath:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1665944345 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1133903379251599338, guid: 50efabfde29e5a44b83041acd46ec4e3, type: 3}
+  m_PrefabInstance: {fileID: 8761206784384519006}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1665944337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 197dd56e97896f84c9c759553bbef48a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8761206784384519006
 PrefabInstance:
   m_ObjectHideFlags: 0
