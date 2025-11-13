@@ -21,8 +21,8 @@ public class PlayerController : MonoBehaviour
     private List<Transform> _enemiesInRange = new List<Transform>();
     private Transform _currentTarget;
     private bool _wasAiming = false;
-    private bool _isResetting = false; // 🔥 Новый флаг для отслеживания сброса
-    private float _resetTimer = 0f; // 🔥 Таймер для плавного сброса
+    private bool _isResetting = false; 
+    private float _resetTimer = 0f;
 
     private void Start()
     {
@@ -39,19 +39,17 @@ public class PlayerController : MonoBehaviour
        {
            AimToTarget();
            _wasAiming = true;
-           _isResetting = false; // 🔥 Отменяем сброс если появилась цель
+           _isResetting = false; 
        }
        else
        {
            if (_wasAiming)
            {
-               // 🔥 Запускаем процесс сброса
                _isResetting = true;
                _resetTimer = 0f;
                _wasAiming = false;
            }
            
-           // 🔥 Если идет процесс сброса - продолжаем его
            if (_isResetting)
            {
                ResetToDefaultPosition();
@@ -138,20 +136,17 @@ public class PlayerController : MonoBehaviour
         }
     }
     
-    // 🔥 ИСПРАВЛЕННЫЙ МЕТОД: Плавный возврат в исходное положение
     void ResetToDefaultPosition()
     {
         _resetTimer += Time.deltaTime;
-        float progress = _resetTimer / 0.5f; // 🔥 Сброс за 0.5 секунды
+        float progress = _resetTimer / 0.5f; 
         
-        // Плавный возврат тела
         partsPlayer.transform.localRotation = Quaternion.Lerp(
             partsPlayer.transform.localRotation,
             Quaternion.Euler(0, 0, 0),
             progress
         );
-            
-        // Плавный возврат оружия
+        
         if (weaponArmR != null && weaponArmL != null)
         {
             weaponArmR.rotation = Quaternion.Lerp(
@@ -160,13 +155,12 @@ public class PlayerController : MonoBehaviour
                 progress
             );
             weaponArmL.rotation = Quaternion.Lerp(
-                weaponArmL.rotation, // 🔥 ИСПРАВЛЕНО: было weaponArmR
+                weaponArmL.rotation, 
                 Quaternion.Euler(0, 0, 0 + offset),
                 progress
             );
         }
         
-        // Плавный возврат головы
         if (head != null)
         {
             head.rotation = Quaternion.Lerp(
@@ -175,8 +169,7 @@ public class PlayerController : MonoBehaviour
                 progress
             );
         }
-        
-        // 🔥 Когда сброс завершен
+       
         if (progress >= 1f)
         {
             _isResetting = false;

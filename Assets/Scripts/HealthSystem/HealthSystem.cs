@@ -8,7 +8,7 @@ public class HealthSystem : MonoBehaviour
     public float currentHealth;
     
     [Header("Events")]
-    public UnityEvent<float> OnHealthChanged; // UnityEvent с параметром
+    public UnityEvent<float> OnHealthChanged; 
     public UnityEvent OnDeath;
     
     public float HealthPercent => currentHealth / maxHealth;
@@ -54,6 +54,5 @@ public class HealthSystem : MonoBehaviour
         Collider2D collider = GetComponent<Collider2D>();
         if (collider != null) collider.enabled = false;
         
-        Debug.Log($"{gameObject.name} умер!");
     }
 }

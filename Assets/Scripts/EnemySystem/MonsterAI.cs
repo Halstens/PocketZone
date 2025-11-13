@@ -6,7 +6,7 @@ public class MonsterAI : MonoBehaviour
     public float moveSpeed = 2f;
     public float detectionRange = 5f;
     public float attackRange = 1.5f;
-    public float stopDistance = 1f; // Новое: расстояние остановки
+    public float stopDistance = 1f;
     public float attackDamage = 10f;
     public float attackCooldown = 2f;
     
@@ -86,7 +86,6 @@ public class MonsterAI : MonoBehaviour
         if (!_playerHealth.Equals(null))
         {
             _playerHealth.TakeDamage(attackDamage);
-            //Debug.Log($"Монстр атаковал игрока! Урон: {attackDamage}");
         }
     }
     

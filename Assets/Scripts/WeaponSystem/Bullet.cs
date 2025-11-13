@@ -26,7 +26,6 @@ public class Bullet : MonoBehaviour
     {
         if (isDestroyed) return;
         
-        // Проверяем ТЕГИ, а не слои
         if (collision.CompareTag("Monster"))
         {
             HealthSystem health = collision.GetComponent<HealthSystem>();
@@ -40,10 +39,9 @@ public class Bullet : MonoBehaviour
         {
             DestroyBullet();
         }
-        // Игнорируем столкновения с другими пулями и игроком
+        
         else if (collision.CompareTag("Bullet") || collision.CompareTag("Player"))
         {
-            // Ничего не делаем
         }
     }
     

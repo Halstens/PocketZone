@@ -24,7 +24,6 @@ public class MonsterSpawner : MonoBehaviour
             if (spawnPosition != Vector2.zero)
             {
                 Instantiate(monsterPrefab, spawnPosition, Quaternion.identity);
-                //Debug.Log($"Монстр заспавнен в позиции: {spawnPosition}");
             }
         }
     }
@@ -32,14 +31,12 @@ public class MonsterSpawner : MonoBehaviour
     Vector2 GetValidSpawnPosition()
     {
         int attempts = 0;
-        while (attempts < 20) // Защита от бесконечного цикла
+        while (attempts < 20) 
         {
             Vector2 randomPos = (Vector2)transform.position + Random.insideUnitCircle * spawnRadius;
             
-            // Проверяем что позиция не слишком близко к игроку
             if (Vector2.Distance(randomPos, player.position) > minDistanceFromPlayer)
             {
-                // Проверяем что позиция доступна (не в стене)
                 Collider2D hit = Physics2D.OverlapCircle(randomPos, 0.5f);
                 if (hit == null || hit.isTrigger)
                 {
@@ -50,7 +47,6 @@ public class MonsterSpawner : MonoBehaviour
             attempts++;
         }
         
-        //Debug.LogWarning("Не удалось найти валидную позицию для спавна монстра!");
         return Vector2.zero;
     }
     

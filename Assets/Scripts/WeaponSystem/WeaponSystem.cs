@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class WeaponSystem : MonoBehaviour
 {
-    // Public поля для настройки в Inspector
     [Header("Shooting")]
     public Transform firePoint;
     public GameObject bulletPrefab;
@@ -16,16 +15,12 @@ public class WeaponSystem : MonoBehaviour
     public float fireRate = 5.2f;
     public bool autoShoot = true;
     
-    // Private поля (не видны в Inspector)
-    private float _nextFireTime = 0f;  // ← ЭТОЙ СТРОКИ НЕ ХВАТАЛО!
+    private float _nextFireTime = 0f; 
     private bool _isShooting = false;
     private PlayerController _autoAim;
-
     
-    // Свойство только для чтения
     public bool CanShoot => currentAmmo > 0 && Time.time >= _nextFireTime;
     
-    // Остальной код без изменений...
     void Start()
     {
         currentAmmo = maxAmmo;
