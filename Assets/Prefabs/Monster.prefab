@@ -262,7 +262,7 @@ MonoBehaviour:
   stopDistance: 1
   attackDamage: 10
   attackCooldown: 1
-  lootItem: {fileID: 0}
+  lootItem: {fileID: 6396987566803016591, guid: 8229f7045c999764bb9c737417aaa65d, type: 3}
 --- !u!1 &3991269060986782213
 GameObject:
   m_ObjectHideFlags: 0
