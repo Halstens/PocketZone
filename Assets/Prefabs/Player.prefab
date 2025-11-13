@@ -244,9 +244,9 @@ GameObject:
   - component: {fileID: 8761206783826395213}
   - component: {fileID: 8761206783826395212}
   - component: {fileID: 8761206783826395210}
-  - component: {fileID: 8761206783826395211}
   - component: {fileID: 807987088503140102}
   - component: {fileID: 1133903379251599338}
+  - component: {fileID: 4571832931220623742}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -291,6 +291,10 @@ MonoBehaviour:
   weaponArmL: {fileID: 8761206783477766785}
   head: {fileID: 8761206783958088985}
   partsPlayer: {fileID: 8761206785127503064}
+  enemyLayerMask:
+    serializedVersion: 2
+    m_Bits: 128
+  detectionZone: {fileID: 4571832931220623742}
 --- !u!50 &8761206783826395210
 Rigidbody2D:
   serializedVersion: 4
@@ -312,22 +316,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &8761206783826395211
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8761206783826395215}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.5
 --- !u!114 &807987088503140102
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -366,6 +354,23 @@ MonoBehaviour:
   maxAmmo: 30
   currentAmmo: 30
   fireRate: 0.2
+  autoShoot: 1
+--- !u!58 &4571832931220623742
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8761206783826395215}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 2
 --- !u!1 &8761206783928172671
 GameObject:
   m_ObjectHideFlags: 0

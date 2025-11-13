@@ -24,7 +24,7 @@ public class MonsterSpawner : MonoBehaviour
             if (spawnPosition != Vector2.zero)
             {
                 Instantiate(monsterPrefab, spawnPosition, Quaternion.identity);
-                Debug.Log($"Монстр заспавнен в позиции: {spawnPosition}");
+                //Debug.Log($"Монстр заспавнен в позиции: {spawnPosition}");
             }
         }
     }
@@ -50,7 +50,7 @@ public class MonsterSpawner : MonoBehaviour
             attempts++;
         }
         
-        Debug.LogWarning("Не удалось найти валидную позицию для спавна монстра!");
+        //Debug.LogWarning("Не удалось найти валидную позицию для спавна монстра!");
         return Vector2.zero;
     }
     

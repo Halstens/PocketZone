@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9078295090846860178}
   - component: {fileID: 4224637631520081904}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: MonsterlegF1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4597739233695274234}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: legb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -126,7 +126,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5418819543122976752}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: legf
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -163,9 +163,9 @@ GameObject:
   - component: {fileID: 1841188720738699502}
   - component: {fileID: 1940657772167108631}
   - component: {fileID: 8929975987514836615}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Monster
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -197,12 +197,12 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 1.09
 --- !u!50 &1841188720738699502
 Rigidbody2D:
   serializedVersion: 4
@@ -273,7 +273,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5977178319922142508}
   - component: {fileID: 6906998656190937274}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: MonsterlegF2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -356,7 +356,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8718001528147582972}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: MonsterParts
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -391,7 +391,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2768784601640982821}
   - component: {fileID: 3258149322034846218}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: MonsterlegB2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -475,7 +475,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7089285988915120026}
   - component: {fileID: 1943892202135898708}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: MonsterBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -559,7 +559,7 @@ GameObject:
   m_Component:
   - component: {fileID: 441108251312752929}
   - component: {fileID: 5142766773195242023}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: MonsterlegB1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -652,6 +652,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.754717
       objectReference: {fileID: 0}
+    - target: {fileID: 496731785147029767, guid: e4246b3f042c06b4ebdcd1e3ecc122a7, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 5123731043683840204, guid: e4246b3f042c06b4ebdcd1e3ecc122a7, type: 3}
       propertyPath: healthSystem
       value: 
@@ -740,6 +744,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5694151634490965079, guid: e4246b3f042c06b4ebdcd1e3ecc122a7, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 6062157065829380452, guid: e4246b3f042c06b4ebdcd1e3ecc122a7, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -748,9 +756,21 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6300411274472737627, guid: e4246b3f042c06b4ebdcd1e3ecc122a7, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 8205821828540775203, guid: e4246b3f042c06b4ebdcd1e3ecc122a7, type: 3}
       propertyPath: m_Name
       value: StatsCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 8205821828540775203, guid: e4246b3f042c06b4ebdcd1e3ecc122a7, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424489476930791795, guid: e4246b3f042c06b4ebdcd1e3ecc122a7, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e4246b3f042c06b4ebdcd1e3ecc122a7, type: 3}

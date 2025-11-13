@@ -14,23 +14,27 @@ public class WeaponSystem : MonoBehaviour
     
     [Header("Settings")]
     public float fireRate = 5.2f;
+    public bool autoShoot = true;
     
     // Private поля (не видны в Inspector)
-    private float nextFireTime = 0f;  // ← ЭТОЙ СТРОКИ НЕ ХВАТАЛО!
-    private bool isShooting = false;
+    private float _nextFireTime = 0f;  // ← ЭТОЙ СТРОКИ НЕ ХВАТАЛО!
+    private bool _isShooting = false;
+    private PlayerController _autoAim;
+
     
     // Свойство только для чтения
-    public bool CanShoot => currentAmmo > 0 && Time.time >= nextFireTime;
+    public bool CanShoot => currentAmmo > 0 && Time.time >= _nextFireTime;
     
     // Остальной код без изменений...
     void Start()
     {
         currentAmmo = maxAmmo;
+        _autoAim = GetComponent<PlayerController>();
     }
     
     void Update()
     {
-        if (isShooting && CanShoot)
+        if (_isShooting && CanShoot)
         {
             Shoot();
         }
@@ -38,26 +42,25 @@ public class WeaponSystem : MonoBehaviour
     
     public void StartShooting()
     {
-        isShooting = true;
+        _isShooting = true;
     }
     
     public void StopShooting()
     {
-        isShooting = false;
+        _isShooting = false;
     }
     
     private void Shoot()
     {
         currentAmmo--;
-        nextFireTime = Time.time + fireRate;
+        _nextFireTime = Time.time + fireRate;
         
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-        Debug.Log($"Выстрел! Патронов осталось: {currentAmmo}");
+
     }
     
     public void AddAmmo(int amount)
     {
         currentAmmo = Mathf.Clamp(currentAmmo + amount, 0, maxAmmo);
-        Debug.Log($"Добавлено {amount} патронов. Теперь: {currentAmmo}");
     }
 }

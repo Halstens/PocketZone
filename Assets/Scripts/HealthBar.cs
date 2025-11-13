@@ -10,26 +10,26 @@ public class HealthBar : MonoBehaviour
     [Header("Settings")]
     [SerializeField] private bool alwaysVisible = true; // Новая настройка
     
-    private Transform cameraTransform;
+    private Transform _cameraTransform;
     
     void Start()
     {
-        Debug.Log("WorldHealthBar Start вызван");
+        //Debug.Log("WorldHealthBar Start вызван");
         
-        cameraTransform = Camera.main.transform;
+        _cameraTransform = Camera.main.transform;
         
         if (healthSystem == null)
             healthSystem = GetComponentInParent<HealthSystem>();
         
         if (healthSystem == null)
         {
-            Debug.LogError("HealthSystem не найден!");
+            //Debug.LogError("HealthSystem не найден!");
             return;
         }
         
         if (healthSlider == null)
         {
-            Debug.LogError("HealthSlider не назначен!");
+            //Debug.LogError("HealthSlider не назначен!");
             return;
         }
         
@@ -39,7 +39,7 @@ public class HealthBar : MonoBehaviour
         // Принудительно обновляем полосу при старте
         UpdateHealthBar(healthSystem.currentHealth);
         
-        Debug.Log($"HealthBar инициализирован. Здоровье: {healthSystem.currentHealth}/{healthSystem.maxHealth}");
+        //Debug.Log($"HealthBar инициализирован. Здоровье: {healthSystem.currentHealth}/{healthSystem.maxHealth}");
     }
     
     // void Update()
@@ -53,7 +53,7 @@ public class HealthBar : MonoBehaviour
     
     void UpdateHealthBar(float currentHealth)
     {
-        Debug.Log($"UpdateHealthBar вызван: {currentHealth}");
+        //Debug.Log($"UpdateHealthBar вызван: {currentHealth}");
         
         if (healthSlider != null)
         {
@@ -63,13 +63,13 @@ public class HealthBar : MonoBehaviour
             bool shouldShow = alwaysVisible || currentHealth < healthSystem.maxHealth;
             healthSlider.gameObject.SetActive(shouldShow);
             
-            Debug.Log($"HealthBar обновлен: {healthSystem.HealthPercent:P0}, видим: {shouldShow}");
+            //Debug.Log($"HealthBar обновлен: {healthSystem.HealthPercent:P0}, видим: {shouldShow}");
         }
     }
     
     void OnCharacterDeath()
     {
-        Debug.Log("OnCharacterDeath вызван");
+        //Debug.Log("OnCharacterDeath вызван");
         if (healthSlider != null)
             healthSlider.gameObject.SetActive(false);
     }

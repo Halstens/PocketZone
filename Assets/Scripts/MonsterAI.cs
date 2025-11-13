@@ -13,37 +13,37 @@ public class MonsterAI : MonoBehaviour
     [Header("Loot")]
     public GameObject lootItem;
     
-    private Transform player;
-    private Rigidbody2D rb;
-    private HealthSystem healthSystem;
-    private HealthSystem playerHealth;
-    private float lastAttackTime;
-    private bool isDead = false;
+    private Transform _player;
+    private Rigidbody2D _rb;
+    private HealthSystem _system;
+    private HealthSystem _playerHealth;
+    private float _lastAttackTime;
+    private bool _isDead = false;
     
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
-        rb = GetComponent<Rigidbody2D>();
-        healthSystem = GetComponent<HealthSystem>();
-        playerHealth = player.GetComponent<HealthSystem>();
+        _player = GameObject.FindGameObjectWithTag("Player").transform;
+        _rb = GetComponent<Rigidbody2D>();
+        _system = GetComponent<HealthSystem>();
+        _playerHealth = _player.GetComponent<HealthSystem>();
         
-        if (healthSystem != null)
+        if (_system != null)
         {
-            healthSystem.OnDeath.AddListener(OnMonsterDeath);
+            _system.OnDeath.AddListener(OnMonsterDeath);
         }
         
         // Убедимся что Rigidbody2D настроен правильно
-        if (rb != null)
+        if (_rb != null)
         {
-            rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
+            _rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
         }
     }
     
     void Update()
     {
-        if (isDead || player == null) return;
+        if ((_isDead || _player).Equals(null)) return;
         
-        float distanceToPlayer = Vector2.Distance(transform.position, player.position);
+        float distanceToPlayer = Vector2.Distance(transform.position, _player.position);
         
         if (distanceToPlayer <= detectionRange)
         {
@@ -51,49 +51,49 @@ public class MonsterAI : MonoBehaviour
             if (distanceToPlayer > stopDistance)
             {
                 // Движение к игроку
-                Vector2 direction = (player.position - transform.position).normalized;
+                Vector2 direction = (_player.position - transform.position).normalized;
                 
                 // Используем MovePosition для плавного движения
                 Vector2 newPosition = Vector2.MoveTowards(
-                    rb.position, 
-                    player.position, 
+                    _rb.position, 
+                    _player.position, 
                     moveSpeed * Time.deltaTime
                 );
-                rb.MovePosition(newPosition);
+                _rb.MovePosition(newPosition);
             }
             else
             {
                 // Останавливаемся если слишком близко
-                rb.velocity = Vector2.zero;
+                _rb.velocity = Vector2.zero;
             }
             
             // Атака если в радиусе
-            if (distanceToPlayer <= attackRange && Time.time >= lastAttackTime + attackCooldown)
+            if (distanceToPlayer <= attackRange && Time.time >= _lastAttackTime + attackCooldown)
             {
                 AttackPlayer();
             }
         }
         else
         {
-            rb.velocity = Vector2.zero;
+            _rb.velocity = Vector2.zero;
         }
     }
     
     void AttackPlayer()
     {
-        lastAttackTime = Time.time;
+        _lastAttackTime = Time.time;
         
-        if (playerHealth != null)
+        if (!_playerHealth.Equals(null))
         {
-            playerHealth.TakeDamage(attackDamage);
-            Debug.Log($"Монстр атаковал игрока! Урон: {attackDamage}");
+            _playerHealth.TakeDamage(attackDamage);
+            //Debug.Log($"Монстр атаковал игрока! Урон: {attackDamage}");
         }
     }
     
     void OnMonsterDeath()
     {
-        isDead = true;
-        rb.velocity = Vector2.zero;
+        _isDead = true;
+        _rb.velocity = Vector2.zero;
         DropLoot();
         GetComponent<Collider2D>().enabled = false;
         this.enabled = false;

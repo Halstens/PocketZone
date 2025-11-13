@@ -13922,9 +13922,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deathScreen: {fileID: 4016080829275951304}
   restartButton: {fileID: 126218822}
-  menuButton: {fileID: 0}
   gameSceneName: SampleScene
-  menuSceneName: MenuScene
 --- !u!1001 &7857268864206619996
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14005,6 +14003,14 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4571832931220623742, guid: 50efabfde29e5a44b83041acd46ec4e3, type: 3}
+      propertyPath: m_Radius
+      value: 2.11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4571832931220623742, guid: 50efabfde29e5a44b83041acd46ec4e3, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5054189398050873995, guid: 50efabfde29e5a44b83041acd46ec4e3, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -14041,6 +14047,18 @@ PrefabInstance:
       propertyPath: m_BodyType
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8761206783826395210, guid: 50efabfde29e5a44b83041acd46ec4e3, type: 3}
+      propertyPath: m_Simulated
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8761206783826395210, guid: 50efabfde29e5a44b83041acd46ec4e3, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8761206783826395210, guid: 50efabfde29e5a44b83041acd46ec4e3, type: 3}
+      propertyPath: m_UseFullKinematicContacts
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8761206783826395212, guid: 50efabfde29e5a44b83041acd46ec4e3, type: 3}
       propertyPath: Joystick
       value: 
@@ -14055,7 +14073,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8761206783826395213, guid: 50efabfde29e5a44b83041acd46ec4e3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.38
+      value: -3.27
       objectReference: {fileID: 0}
     - target: {fileID: 8761206783826395213, guid: 50efabfde29e5a44b83041acd46ec4e3, type: 3}
       propertyPath: m_LocalPosition.z

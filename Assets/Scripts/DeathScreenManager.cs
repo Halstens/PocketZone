@@ -7,30 +7,30 @@ public class DeathScreenManager : MonoBehaviour
     [Header("UI Elements")]
     [SerializeField] private GameObject deathScreen;
     [SerializeField] private Button restartButton;
-    [SerializeField] private Button menuButton;
+    //[SerializeField] private Button menuButton;
     
     [Header("Settings")]
     [SerializeField] private string gameSceneName = "SampleScene";
-    [SerializeField] private string menuSceneName = "MenuScene";
+        //[SerializeField] private string menuSceneName = "MenuScene";
     
-    private HealthSystem playerHealth;
+    private HealthSystem _playerHealth;
     
     void Start()
     {
         // Находим здоровье игрока
-        playerHealth = FindObjectOfType<PlayerController>()?.GetComponent<HealthSystem>();
+        _playerHealth = FindObjectOfType<PlayerController>()?.GetComponent<HealthSystem>();
         
-        if (playerHealth != null)
+        if (_playerHealth != null)
         {
-            playerHealth.OnDeath.AddListener(ShowDeathScreen);
+            _playerHealth.OnDeath.AddListener(ShowDeathScreen);
         }
         
         // Настраиваем кнопки
         if (restartButton != null)
             restartButton.onClick.AddListener(RestartGame);
             
-        if (menuButton != null)
-            menuButton.onClick.AddListener(GoToMenu);
+        // if (menuButton != null)
+        //     menuButton.onClick.AddListener(GoToMenu);
         
         // Скрываем экран смерти при старте
         if (deathScreen != null)
@@ -62,7 +62,7 @@ public class DeathScreenManager : MonoBehaviour
             weaponSystem.enabled = false;
         }
         
-        Debug.Log("Экран смерти показан");
+        //Debug.Log("Экран смерти показан");
     }
     
     void RestartGame()
@@ -74,21 +74,21 @@ public class DeathScreenManager : MonoBehaviour
         SceneManager.LoadScene(gameSceneName);
     }
     
-    void GoToMenu()
-    {
-        // Возобновляем время
-        Time.timeScale = 1f;
-        
-        // Загружаем меню
-        SceneManager.LoadScene(menuSceneName);
-    }
+    // void GoToMenu()
+    // {
+    //     // Возобновляем время
+    //     Time.timeScale = 1f;
+    //     
+    //     // Загружаем меню
+    //     SceneManager.LoadScene(menuSceneName);
+    // }
     
     void OnDestroy()
     {
         // Отписываемся от событий
-        if (playerHealth != null)
+        if (_playerHealth != null)
         {
-            playerHealth.OnDeath.RemoveListener(ShowDeathScreen);
+            _playerHealth.OnDeath.RemoveListener(ShowDeathScreen);
         }
     }
 }
