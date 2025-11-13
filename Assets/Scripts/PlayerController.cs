@@ -20,7 +20,9 @@ public class PlayerController : MonoBehaviour
     private float _angleAim;
     private List<Transform> _enemiesInRange = new List<Transform>();
     private Transform _currentTarget;
-    private bool _wasAiming = false; // Добавляем флаг для отслеживания состояния прицеливания
+    private bool _wasAiming = false;
+    private bool _isResetting = false; // 🔥 Новый флаг для отслеживания сброса
+    private float _resetTimer = 0f; // 🔥 Таймер для плавного сброса
 
     private void Start()
     {
@@ -37,14 +39,22 @@ public class PlayerController : MonoBehaviour
        {
            AimToTarget();
            _wasAiming = true;
+           _isResetting = false; // 🔥 Отменяем сброс если появилась цель
        }
        else
        {
-           // Если только что перестали прицеливаться - возвращаем в исходное положение
            if (_wasAiming)
            {
-               ResetToDefaultPosition();
+               // 🔥 Запускаем процесс сброса
+               _isResetting = true;
+               _resetTimer = 0f;
                _wasAiming = false;
+           }
+           
+           // 🔥 Если идет процесс сброса - продолжаем его
+           if (_isResetting)
+           {
+               ResetToDefaultPosition();
            }
        }
     }
@@ -128,43 +138,50 @@ public class PlayerController : MonoBehaviour
         }
     }
     
-    // 🔥 НОВЫЙ МЕТОД: Возврат в исходное положение
+    // 🔥 ИСПРАВЛЕННЫЙ МЕТОД: Плавный возврат в исходное положение
     void ResetToDefaultPosition()
     {
-        // Возвращаем тело в положение "смотрит вправо"
+        _resetTimer += Time.deltaTime;
+        float progress = _resetTimer / 0.5f; // 🔥 Сброс за 0.5 секунды
+        
+        // Плавный возврат тела
         partsPlayer.transform.localRotation = Quaternion.Lerp(
             partsPlayer.transform.localRotation,
             Quaternion.Euler(0, 0, 0),
-            Time.deltaTime * 5f
+            progress
         );
             
-        // Возвращаем оружие в нейтральное положение (вправо)
+        // Плавный возврат оружия
         if (weaponArmR != null && weaponArmL != null)
         {
             weaponArmR.rotation = Quaternion.Lerp(
                 weaponArmR.rotation,
                 Quaternion.Euler(0, 0, 0 + offset),
-                Time.deltaTime * 5f
+                progress
             );
             weaponArmL.rotation = Quaternion.Lerp(
-                weaponArmR.rotation,
+                weaponArmL.rotation, // 🔥 ИСПРАВЛЕНО: было weaponArmR
                 Quaternion.Euler(0, 0, 0 + offset),
-                Time.deltaTime * 5f
+                progress
             );
         }
         
-        // Возвращаем голову в нейтральное положение
+        // Плавный возврат головы
         if (head != null)
         {
             head.rotation = Quaternion.Lerp(
                 head.rotation,
                 Quaternion.Euler(0, 0, 0),
-                Time.deltaTime * 5f
+                progress
             );
         }
         
-        _angleAim = 0;
-        //Debug.Log("🎯 Персонаж возвращен в исходное положение");
+        // 🔥 Когда сброс завершен
+        if (progress >= 1f)
+        {
+            _isResetting = false;
+            _angleAim = 0;
+        }
     }
     
     void OnTriggerExit2D(Collider2D other)
